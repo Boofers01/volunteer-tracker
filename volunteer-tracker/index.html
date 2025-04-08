@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Onboarding Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Volunteer Onboarding Tracker</h1>
+        <div class="header-actions">
+            <button id="syncWithLGL">Sync with LGL</button>
+            <button id="editMasterChecklist">Edit Master Checklist</button>
+            <input type="text" id="newListTitle" placeholder="New list title">
+            <button id="addList">Add List</button>
+        </div>
+    </header>
+
+    <main id="board" class="board">
+        <!-- Lists will be generated here via JavaScript -->
+    </main>
+
+    <!-- Card Modal Template -->
+    <div id="cardModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-tabs">
+                <button class="tab-button active" data-tab="details">Details</button>
+                <button class="tab-button" data-tab="checklist">Checklist (<span id="checklistPercentage">0</span>%)</button>
+                <button class="tab-button" data-tab="tags">Tags</button>
+            </div>
+            
+            <div id="detailsTab" class="tab-content active">
+                <div class="volunteer-header">
+                    <div class="volunteer-initials"></div>
+                    <div class="volunteer-info">
+                        <h2 id="volunteerName" contenteditable="true"></h2>
+                        <p id="addedDate"></p>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-section">
+                        <h3>Email</h3>
+                        <p id="volunteerEmail" contenteditable="true">Not provided</p>
+                    </div>
+                    <div class="info-section">
+                        <h3>Phone</h3>
+                        <p id="volunteerPhone" contenteditable="true">Not provided</p>
+                    </div>
+                </div>
+                
+                <div class="notes-section">
+                    <h3>Notes</h3>
+                    <div id="volunteerNotes" contenteditable="true">No notes available</div>
+                </div>
+                
+                <div class="attachments-section">
+                    <h3>Attachments</h3>
+                    <div id="attachmentsList"></div>
+                    <input type="file" id="fileUpload" multiple style="display: none;">
+                    <button id="attachButton">Attach File</button>
+                </div>
+            </div>
+            
+            <div id="checklistTab" class="tab-content">
+                <h3>Onboarding Progress</h3>
+                <div id="volunteerChecklist" class="checklist-items">
+                    <!-- Checklist items will be generated here -->
+                </div>
+            </div>
+            
+            <div id="tagsTab" class="tab-content">
+                <h3>Tags</h3>
+                <div id="volunteerTags">
+                    <!-- Tags will be generated here -->
+                </div>
+                <input type="text" id="newTagInput" placeholder="Add new tag">
+                <button id="addTagButton">Add Tag</button>
+            </div>
+            
+            <div class="modal-actions">
+                <button id="saveCardButton">Save</button>
+                <button id="deleteCardButton" class="danger">Delete Card</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Master Checklist Modal -->
+    <div id="masterChecklistModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Master Checklist</h2>
+            <div id="masterChecklistItems">
+                <!-- Master checklist items will be generated here -->
+            </div>
+            <div class="add-checklist-item">
+                <input type="text" id="newChecklistItem" placeholder="New checklist item">
+                <button id="addChecklistItem">Add Item</button>
+            </div>
+            <div class="modal-actions">
+                <button id="saveMasterChecklist">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/lgl-integration.js"></script>
+    <script src="js/checklist.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
